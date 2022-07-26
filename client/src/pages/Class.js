@@ -93,7 +93,7 @@ export const PeopleTable = props => {
 				search={true}
 				sort={true}
 				pagination={{
-					limit: 3,
+					limit: 2,
 				}}
 			/>
 		</div>
