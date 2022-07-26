@@ -1,4 +1,5 @@
 # less_toxic_facebook
+- Viewable at https://productive-cs-students.herokuapp.com/
 
 ## Features
 - Search computer science classes using key words.
