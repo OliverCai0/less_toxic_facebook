@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
+import Alert from 'react-bootstrap/Alert';
 
 async function loginUser(credentials) {
 console.log(credentials.token);
@@ -16,6 +17,7 @@ console.log(credentials.token);
 
 const Login = ({token, setToken}) => {
 	var alert;
+	const [badLogin, setBadLogin] = useState(false);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const history = useNavigate()
@@ -44,9 +46,10 @@ const Login = ({token, setToken}) => {
 	      password
 	    });
 	    if (token.token == null){
-	    	
+			setBadLogin(true)
 	    }
 	    else{
+			setBadLogin(false)
 	    	setToken(token);
 	    	history("/");
 	    }
@@ -74,13 +77,17 @@ const Login = ({token, setToken}) => {
 	// 	event.preventDefault();
 	// }
 	return(
+		<div style={{height: "100%"}}>
+		{badLogin && <Alert variant='danger'
+style={{}}>Bad Login, please check your password or email</Alert>}
 		<div style={container}>
+
 		<div style={{width: "50%"}}>
 		</div>
 		<div class="col-sm-6 text-black" style={{display: "flex", flexDirection: "column",
-																							justifyContent: "center", height: "93vh",
-																							background: "white"} }>
-
+			 justifyContent: "center", height: "93vh",
+			 background: "white"} }>
+																								
         <div class="px-5 ms-xl-4">
           <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style={{color: "#709085"} }></i>
         </div>
@@ -116,6 +123,7 @@ const Login = ({token, setToken}) => {
         </div>
         </div>
       </div>
+	  </div>
 		)
 }
 

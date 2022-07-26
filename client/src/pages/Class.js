@@ -45,7 +45,7 @@ export const Chart = (gradeData) => {
         }]
     }
 	return (
-		<div style={{marginLeft: "50%"}}>
+		<div style={{marginLeft: "50%", backgroundColor: 'rgba(61, 12, 2, .8)'}}>
 			<h3 style={{textAlign: "center", color: "whitesmoke"}}>Grade Distribution</h3>
 			<Bar data={chartData} redraw={true} options={{
 				plugins: {
@@ -93,8 +93,7 @@ export const PeopleTable = props => {
 				search={true}
 				sort={true}
 				pagination={{
-					enabled: false,
-					limit: 1,
+					limit: 5,
 				}}
 			/>
 		</div>
@@ -142,13 +141,15 @@ const ClassPage = () => {
 		users = info.users;
 		console.log(users);
 		return (
-			<div>
+			<div style={{padding: '2%' }}>
+				<div style={{backgroundColor: 'rgba(61, 12, 2, .8)'}}>
 				<h1 style={{color:"whitesmoke"}}> {info.class_info.title} </h1>
 				<h3 style={{color:"whitesmoke"}}> {info.class_info.fullNameInstructors} </h3>
 				<div style={{color:"whitesmoke"}}>{info.class_info.descrip}</div>
+				</div>
 				<div>
 					<h2 style={{color:"whitesmoke"}}>People</h2>
-					<PeopleTable people={users}/>
+					<PeopleTable people={users} style={{height: '50%'}}/>
 					<Chart gradeData={class_info.grades}/>
 				</div>
 			</div>
@@ -159,12 +160,15 @@ const ClassPage = () => {
 		class_info = info.class_info;
 		users = info.users;
 		return (
-			<div>
-				<h1 style={{color:"whitesmoke"}}> {info.class_info.title} </h1>
+			<div style={{padding: '2%' }}>
+				<div style={{backgroundColor: 'rgba(61, 12, 2, .8)'}}>
+				<div style={{}}>
+					<h1 style={{color:"whitesmoke", width: '50%'}}> {info.class_info.title} </h1>
+					<input class="btn btn-info btn-lg btn-block" type="button" value="Add Class" onClick={showAddClass}/>
+				</div>
 				<h3 style={{color:"whitesmoke"}}> {info.class_info.fullNameInstructors} </h3>
 				<div style={{color:"whitesmoke"}}>{info.class_info.descrip}</div>
-				
-				<input type="button" value="Add Class" onClick={showAddClass}/>
+				</div>
 				<form onSubmit={handleSubmit} method="post">
 					<input type="text" id="grade" style={{display:"none"}} placeholder="Grade"/>
                     <input type="submit" id="submitClass" style={{display:"none"}} value="Add"/>
