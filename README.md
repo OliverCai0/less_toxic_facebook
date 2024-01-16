@@ -10,6 +10,15 @@
 - Chatting feature
 - Improvements in UI
 
+## Install
+```
+git clone https://github.com/OliverCai0/less_toxic_facebook
+cd less_toxic_facebook
+npm install
+cd client
+npm install --force
+```
+
 ## Start Website (Local Test)
 ```
 cd backend
